@@ -1,0 +1,6 @@
+instancias/
+obj/
+*.o
+*.exe
+*.d
+exec
