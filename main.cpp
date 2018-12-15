@@ -305,10 +305,13 @@ void FC(vector<Ruta> Rutas, int velocidad, int nu_nodos, int nu_rutas, float tie
           const bool is_in = Nodos.find(nu_nodos-1) != Nodos.end();
           while(!Nodos.empty() && is_in)
             {
-            Rutas.back().addNodo(Grafo[*Nodos.begin()]);
-            Nodos.erase(*Nodos.begin());
-            FC(Rutas, velocidad, nu_nodos, nu_rutas, tiempo_max, Nodos, iter);
+            int nodito = *Nodos.begin();
+            nodostemp.erase(nodito);
+            Rutas.back().addNodo(Grafo[nodito]);
+            Nodos.erase(nodito);
+            FC(Rutas, velocidad, nu_nodos, nu_rutas, tiempo_max, nodostemp, iter);
             Rutas.back().delNodo();
+            nodostemp.insert(nodito);
             };
           };
         };
